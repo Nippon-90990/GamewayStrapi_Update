@@ -1,0 +1,182 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "card_region": {
+      "type": "enumeration",
+      "enum": [
+        "EUROPE",
+        "UNITED STATES",
+        "GLOBAL",
+        "RUSSIA",
+        "UNITED KINGDOM",
+        "CHINA",
+        "ROW (REST OF WORLD)",
+        "LATIN AMERICA",
+        "ASIA",
+        "GERMANY",
+        "AUSTRALIA",
+        "BRAZIL",
+        "INDIA",
+        "JAPAN",
+        "NORTH AMERICA",
+        "POLAND",
+        "TURKEY",
+        "HONG KONG",
+        "TAIWAN",
+        "VIETNAM",
+        "THAILAND",
+        "SOUTH KOREA",
+        "ARGENTINA",
+        "CANADA",
+        "DENMARK",
+        "SWEDEN"
+      ]
+    },
+    "region": {
+      "type": "enumeration",
+      "enum": [
+        "Europe",
+        "United States",
+        "Global",
+        "Russia",
+        "United Kingdom",
+        "China",
+        "ROW (Rest of World)",
+        "Latin America",
+        "Asia",
+        "Germany",
+        "Australia",
+        "Brazil",
+        "India",
+        "Japan",
+        "North America",
+        "Poland",
+        "Turkey",
+        "Hong Kong",
+        "Taiwan",
+        "Vietnam",
+        "Thailand",
+        "South Korea",
+        "Argentina",
+        "Canada",
+        "Denmark",
+        "Sweden"
+      ]
+    },
+    "price": {
+      "type": "biginteger",
+      "required": true
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "Steam",
+        "  Xbox ",
+        " PlayStation ",
+        " Epic"
+      ]
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "product"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "gamekeys": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::game-key.game-key",
+      "mappedBy": "product"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order.order",
+      "mappedBy": "products"
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist-item.wishlist-item",
+      "mappedBy": "product"
+    },
+    "originalPrice": {
+      "type": "biginteger"
+    },
+    "workPlatform": {
+      "type": "enumeration",
+      "enum": [
+        "Windows",
+        "Mac",
+        "Microsoft",
+        "Xbox",
+        "PlayStation",
+        "Nintendo"
+      ]
+    },
+    "gameGenreTags": {
+      "type": "enumeration",
+      "enum": [
+        "Action",
+        "Adventure",
+        "Role-Playing (RPG)",
+        "Shooter",
+        "Fighting",
+        "Racing",
+        "Simulation",
+        "Strategy",
+        "Puzzle",
+        "Horror",
+        "Platformer",
+        "Survival",
+        "Sports",
+        "Stealth",
+        "Rhythm",
+        "Visual Novel",
+        "Hack and Slash",
+        "Sandbox",
+        "Roguelike",
+        "MOBA",
+        "Metroidvania",
+        "Turn-Based",
+        "Open World",
+        "Idle"
+      ]
+    }
+  }
+}

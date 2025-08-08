@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gift_cards",
+  "info": {
+    "singularName": "gift-card",
+    "pluralName": "gift-cards",
+    "displayName": "Gift Card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "card_region": {
+      "type": "enumeration",
+      "enum": [
+        "GLOBAL"
+      ]
+    },
+    "region": {
+      "type": "enumeration",
+      "enum": [
+        "INDIA"
+      ]
+    },
+    "originalPrice": {
+      "type": "biginteger"
+    },
+    "price": {
+      "type": "biginteger"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": [
+        "INDIA"
+      ]
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "descriptionkey": {
+      "type": "richtext"
+    }
+  }
+}
