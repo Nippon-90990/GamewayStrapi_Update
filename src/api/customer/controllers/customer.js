@@ -1,9 +1,17 @@
-'use strict';
+module.exports = {
+    async sync(ctx) {
+        const { clerkId, email, firstName, lastName, imageUrl } = ctx.request.body;
 
-/**
- * customer controller
- */
+        let user = await strapi.db.query('api::customer.customer').findOne({
+            where: { clerkId }
+        });
 
-const { createCoreController } = require('@strapi/strapi').factories;
+        if (!user) {
+            user = await strapi.db.query('api::customer.customer').create({
+                data: { clerkId, email, firstName, lastName, imageUrl }
+            });
+        }
 
-module.exports = createCoreController('api::customer.customer');
+        return user;
+    }
+};

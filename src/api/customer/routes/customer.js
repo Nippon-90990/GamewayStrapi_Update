@@ -1,9 +1,10 @@
-'use strict';
-
-/**
- * customer router
- */
-
-const { createCoreRouter } = require('@strapi/strapi').factories;
-
-module.exports = createCoreRouter('api::customer.customer');
+module.exports = {
+    routes: [
+        {
+            method: 'POST',
+            path: '/customers/sync',
+            handler: 'customer.sync',
+            config: { auth: false }
+        }
+    ]
+};
