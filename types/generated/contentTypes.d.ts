@@ -506,6 +506,38 @@ export interface ApiCouponCoupon extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
+  collectionName: 'customers';
+  info: {
+    displayName: 'Customer';
+    pluralName: 'customers';
+    singularName: 'customer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clerkId: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    firstName: Schema.Attribute.String;
+    imageUrl: Schema.Attribute.Media<'images'>;
+    lastName: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::customer.customer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGameKeyGameKey extends Struct.CollectionTypeSchema {
   collectionName: 'game_keys';
   info: {
@@ -1409,6 +1441,7 @@ declare module '@strapi/strapi' {
       'api::category-banner.category-banner': ApiCategoryBannerCategoryBanner;
       'api::category.category': ApiCategoryCategory;
       'api::coupon.coupon': ApiCouponCoupon;
+      'api::customer.customer': ApiCustomerCustomer;
       'api::game-key.game-key': ApiGameKeyGameKey;
       'api::gift-card.gift-card': ApiGiftCardGiftCard;
       'api::hero-banner.hero-banner': ApiHeroBannerHeroBanner;
