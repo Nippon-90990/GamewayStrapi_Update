@@ -1,10 +1,12 @@
 module.exports = {
     routes: [
         {
-            method: 'POST',
-            path: '/customers/sync',
-            handler: 'customer.sync',
-            config: { auth: false }
-        }
-    ]
+            method: "POST",
+            path: "/clerk-sync",
+            handler: "clerk-sync.handle",
+            config: {
+                auth: false, // public endpoint; we verify with the Clerk signature
+            },
+        },
+    ],
 };
